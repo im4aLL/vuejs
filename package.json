@@ -1,0 +1,36 @@
+{
+  "name": "vuejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.1.3"
+  },
+  "devDependencies": {
+    "aliasify": "^2.1.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.2",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-watch": "^4.3.11",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "aliasify": {
+    "aliases": {
+      "vue": "vue/dist/vue.js"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "aliasify"
+    ]
+  }
+}
