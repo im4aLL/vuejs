@@ -5,8 +5,19 @@ var Vue = require('vue/dist/vue.js');
 
 new Vue({
     el: '#app',
+
     data: {
-        message: 'peek component'
+        points: 50
+    },
+
+    computed: {
+        skill: function skill() {
+            if (this.points >= 100) {
+                return 'Advanced';
+            }
+
+            return 'Beginner';
+        }
     }
 });
 
@@ -16,9 +27,10 @@ new Vue({
 require('./modules/_example.js')();
 //require('./components/First.js');
 //require('./components/Event-handling.js');
-require('./components/Peek-component.js');
+// require('./components/Peek-component.js');
+require('./components/Computed-propertise.js');
 
-},{"./components/Peek-component.js":1,"./modules/_example.js":3}],3:[function(require,module,exports){
+},{"./components/Computed-propertise.js":1,"./modules/_example.js":3}],3:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();

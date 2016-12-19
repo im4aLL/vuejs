@@ -7,8 +7,16 @@
 <body>
    
     <div id="app">        
-        {{ message }}
+        <counter title="Likes"></counter>
+        <counter title="Dislikes"></counter>
     </div>
+
+    <template id="counter-template">
+        <div>
+            <h1>{{ title }}</h1>
+            <button v-on:click="counter += 1">Increment {{ counter }}</button>
+        </div>
+    </template>
     
     <script src="assets/js/main.js"></script>
     
