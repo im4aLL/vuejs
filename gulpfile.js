@@ -5,6 +5,7 @@ const rename = require('gulp-rename');
 const source = require('vinyl-source-stream');
 const babelify = require('babelify');
 const watch = require('gulp-watch');
+var reload = browserSync.reload;
 
 const config = {
     js: {
