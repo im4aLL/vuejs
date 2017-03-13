@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription plans excercise</title>
+</head>
+<body>
+
+    <div id="app">
+        <pre>{{ $data || json }}
+        </pre>
+        <div v-for="plan in plans">
+            <plan :plan="plan" :active="active"></plan>
+        </div>
+    </div>
+
+    <template id="plan-template">
+        <div>
+            {{ active }}
+            <span>{{ plan.name }}</span>
+            <span>{{ plan.price }}$/month</span>
+            <button v-on:click="setActivePlan">{{ buttonText ? 'Downgrade' : 'Upgrade' }}</button>
+        </div>
+    </template>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.2/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+
+            data: {
+                plans: [
+                    { name: 'Enterprise', price: 100 },
+                    { name: 'Pro', price: 50 },
+                    { name: 'Personal', price: 20 },
+                    { name: 'Free', price: 0 }
+                ],
+
+                active: {}
+            },
+
+            created: function() {
+                this.$on('syncActive', function(plan){
+                    this.active = plan;
+                });
+            },
+
+            components: {
+                plan: {
+                    template: '#plan-template',
+
+                    props: ['plan', 'active'],
+
+                    methods: {
+                        setActivePlan: function() {
+                            this.$parent.$emit('syncActive', this.plan);
+                        }
+                    },
+
+                    computed: {
+                        buttonText: function() {
+                            return this.plan.price < this.active.price;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
